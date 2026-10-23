@@ -1,0 +1,1295 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4e4e7">
+  <meta name="description" content="Анна Кутузова — студия красоты. Окрашивание, стрижки, маникюр, педикюр и услуги барбера.">
+  <title>Анна Кутузова — студия красоты</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --pink: #c78e9e;
+      --pink-light: #f5e8eb;
+      --pink-bg: #fbf7f7;
+      --text: #30282a;
+      --muted: #83787b;
+      --white: #fffdfd;
+      --border: #e9dadd;
+      --dark: #242426;
+      --dark-card: #303034;
+      --grey-text: #d5d1d2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background: var(--pink-bg);
+      line-height: 1.65;
+      transition: background .35s, color .35s;
+    }
+
+    body.barber-mode {
+      --pink: #b6b6ba;
+      --pink-light: #39393d;
+      --pink-bg: #242426;
+      --text: #f3f0f1;
+      --muted: #aaa5a8;
+      --white: #2d2d30;
+      --border: #444448;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1160px, 90%);
+      margin: 0 auto;
+    }
+
+    .topline {
+      padding: 9px 0;
+      background: #ead1d7;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #4e3c41;
+    }
+
+    body.barber-mode .topline {
+      background: #3b3b3f;
+      color: #eee;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--pink-bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .logo small {
+      display: block;
+      margin-top: 5px;
+      font-family: "Manrope", sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-size: 12px;
+    }
+
+    .nav-links a {
+      transition: opacity .2s;
+    }
+
+    .nav-links a:hover {
+      opacity: .6;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--pink);
+      background: var(--pink);
+      color: white;
+      padding: 13px 23px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(.94);
+    }
+
+    .button-outline {
+      color: var(--text);
+      background: transparent;
+      border-color: var(--border);
+    }
+
+    .mode-switch {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 18px 0;
+    }
+
+    .mode-btn {
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 12px;
+      transition: .3s;
+    }
+
+    .mode-btn.active {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: white;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 550px;
+      align-items: center;
+      gap: 55px;
+      padding-top: 30px;
+      padding-bottom: 65px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--pink);
+    }
+
+    h1, h2, h3 {
+      font-weight: 500;
+    }
+
+    h1, h2 {
+      font-family: "Playfair Display", serif;
+    }
+
+    h1 {
+      max-width: 570px;
+      font-size: clamp(43px, 5.5vw, 70px);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+    }
+
+    h1 em {
+      font-weight: 400;
+      color: var(--pink);
+    }
+
+    .hero-description {
+      max-width: 420px;
+      margin: 24px 0 30px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-note {
+      margin-top: 32px;
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 445px;
+      background: var(--pink-light);
+      overflow: hidden;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 445px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .image-caption {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 18px 24px;
+      background: var(--pink-bg);
+      color: var(--text);
+      font-family: "Playfair Display", serif;
+      font-size: 19px;
+    }
+
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-heading {
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(34px, 4vw, 48px);
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 28px 22px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--pink);
+    }
+
+    .service-number {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--pink);
+      margin-bottom: 25px;
+    }
+
+    .service-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 23px;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 12px;
+      flex: 1;
+    }
+
+    .service-link {
+      display: inline-block;
+      margin-top: 23px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .price-section {
+      background: var(--pink-light);
+    }
+
+    body.barber-mode .price-section {
+      background: #2e2e32;
+    }
+
+    .price-list {
+      border-top: 1px solid var(--border);
+    }
+
+    .price-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .price-item span:first-child {
+      max-width: 75%;
+    }
+
+    .price {
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .price-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .about-image {
+      min-height: 420px;
+      background: var(--pink-light);
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-copy h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(35px, 4vw, 49px);
+      line-height: 1.2;
+      margin-bottom: 22px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 17px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .feature {
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 14px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      background: var(--pink-light);
+    }
+
+    .booking-section {
+      background: var(--pink-light);
+    }
+
+    body.barber-mode .booking-section {
+      background: #303034;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 65px;
+      align-items: start;
+    }
+
+    .booking-copy h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(38px, 4vw, 52px);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .booking-copy p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .booking-form {
+      background: var(--pink-bg);
+      border: 1px solid var(--border);
+      padding: 30px;
+    }
+
+    .form-row {
+      margin-bottom: 18px;
+    }
+
+    .form-row label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--text);
+      padding: 12px;
+      border-radius: 0;
+      outline: none;
+      font-size: 12px;
+    }
+
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      border-color: var(--pink);
+    }
+
+    .form-row textarea {
+      min-height: 85px;
+      resize: vertical;
+    }
+
+    .booking-form .button {
+      width: 100%;
+    }
+
+    .form-message {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-link {
+      font-size: 12px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 13px;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+      }
+
+      .nav > .button {
+        display: none;
+      }
+
+      .hero {
+        gap: 28px;
+      }
+
+      .hero-visual,
+      .hero-visual img {
+        min-height: 360px;
+        height: 360px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid,
+      .booking-grid {
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .topline {
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .nav {
+        min-height: 72px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 10px;
+      }
+
+      .nav-links a:nth-child(2),
+      .nav-links a:nth-child(3) {
+        display: none;
+      }
+
+      .mode-switch {
+        padding: 14px 0;
+      }
+
+      .mode-btn {
+        flex: 1;
+        padding: 10px 7px;
+        font-size: 11px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 28px;
+        padding-bottom: 55px;
+        gap: 30px;
+      }
+
+      h1 {
+        font-size: 49px;
+      }
+
+      .hero-visual,
+      .hero-visual img {
+        min-height: 340px;
+        height: 340px;
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .services-grid {
+        gap: 10px;
+      }
+
+      .service-card {
+        min-height: 220px;
+        padding: 20px 15px;
+      }
+
+      .service-card h3 {
+        font-size: 20px;
+      }
+
+      .price-item {
+        font-size: 12px;
+        gap: 12px;
+      }
+
+      .about-grid,
+      .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-image,
+      .about-image img {
+        min-height: 320px;
+        height: 320px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
+      .gallery-grid img {
+        height: 210px;
+      }
+
+      .gallery-grid img:first-child {
+        grid-column: 1 / -1;
+        height: 250px;
+      }
+
+      .booking-form {
+        padding: 22px 17px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topline">
+    Пространство красоты · Стиль · Индивидуальность
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home">
+        Анна Кутузова
+        <small>Beauty studio</small>
+      </a>
+
+      <nav class="nav-links" aria-label="Главное меню">
+        <a href="#services">Услуги</a>
+        <a href="#prices">Цены</a>
+        <a href="#about">О студии</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <a class="button" href="#booking">Записаться</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="mode-switch" aria-label="Выбор направления">
+        <button class="mode-btn active" data-mode="beauty">
+          BEAUTY STUDIO
+        </button>
+        <button class="mode-btn" data-mode="barber">
+          BARBER STUDIO
+        </button>
+      </div>
+    </div>
+
+    <section class="container hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow" id="hero-eyebrow">
+          Студия красоты
+        </div>
+
+        <h1 id="hero-title">
+          Красота в каждой <em>детали.</em>
+        </h1>
+
+        <p class="hero-description" id="hero-description">
+          Пространство, где профессиональный подход
+          встречается с эстетикой. Волосы, ногти и
+          ваш индивидуальный стиль — в одном месте.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="#booking">Записаться на услугу ↗</a>
+          <a class="button button-outline" href="#services">
+            Наши услуги
+          </a>
+        </div>
+
+        <div class="hero-note" id="hero-note">
+          Забота о себе начинается здесь
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img
+          id="hero-image"
+          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=85"
+          alt="Интерьер современной студии красоты"
+        >
+        <div class="image-caption" id="image-caption">
+          Твоя красота — твои правила
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Наши направления</div>
+          <h2 id="services-title">Услуги студии</h2>
+          <p id="services-description">
+            Продуманный сервис, внимание к деталям
+            и результат, который подходит именно вам.
+          </p>
+        </div>
+
+        <div class="services-grid" id="services-grid"></div>
+      </div>
+    </section>
+
+    <section class="section price-section" id="prices">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Прозрачный сервис</div>
+          <h2>Прайс-лист</h2>
+          <p>
+            Выберите интересующую услугу.
+            Итоговая стоимость зависит от выбранной
+            процедуры и её объёма.
+          </p>
+        </div>
+
+        <div class="price-list" id="price-list"></div>
+
+        <p class="price-note">
+          Для уточнения актуальных цен и длительности процедур
+          свяжитесь со студией. Стоимость на этой демонстрационной
+          версии не заменяет официальный прайс.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-image">
+          <img
+            id="about-image"
+            src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=85"
+            alt="Рабочее пространство салона"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="about-copy">
+          <div class="eyebrow">О нашей философии</div>
+          <h2 id="about-title">
+            Эстетика начинается с внимания к деталям
+          </h2>
+
+          <p id="about-text">
+            Мы верим, что красота не требует лишнего.
+            Важны мастерство, индивидуальный подход
+            и атмосфера, в которой можно уделить время себе.
+          </p>
+
+          <p>
+            Выбирайте услугу, обсуждайте пожелания с мастером
+            и находите свой стиль в комфортной обстановке.
+          </p>
+
+          <div class="features">
+            <div class="feature">01 / Индивидуальный подход</div>
+            <div class="feature">02 / Внимание к деталям</div>
+            <div class="feature">03 / Профессиональный сервис</div>
+            <div class="feature">04 / Комфортная атмосфера</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Визуальная эстетика</div>
+          <h2>Атмосфера студии</h2>
+          <p>
+            Примеры изображений для оформления.
+            Их можно заменить фотографиями реальных работ мастеров.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <img
+            src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=85"
+            alt="Укладка волос"
+            loading="lazy"
+          >
+          <img
+            src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=85"
+            alt="Маникюр"
+            loading="lazy"
+          >
+          <img
+            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=85"
+            alt="Рабочее место барбера"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking-section" id="booking">
+      <div class="container booking-grid">
+        <div class="booking-copy">
+          <div class="eyebrow">Ваш следующий шаг</div>
+          <h2>Время уделить внимание себе</h2>
+          <p>
+            Оставьте заявку, выберите направление и укажите
+            желаемую услугу. Мы подготовим сообщение для записи.
+          </p>
+          <p>
+            Для реальной отправки заявок необходимо подключить
+            WhatsApp, Telegram, CRM или серверную форму.
+          </p>
+        </div>
+
+        <form class="booking-form" id="booking-form">
+          <div class="form-row">
+            <label for="client-name">Ваше имя</label>
+            <input
+              id="client-name"
+              name="name"
+              type="text"
+              placeholder="Как к вам обращаться?"
+              required
+            >
+          </div>
+
+          <div class="form-row">
+            <label for="client-phone">Телефон для связи</label>
+            <input
+              id="client-phone"
+              name="phone"
+              type="tel"
+              placeholder="+7 ..."
+              required
+            >
+          </div>
+
+          <div class="form-row">
+            <label for="client-service">Направление</label>
+            <select id="client-service" name="service" required>
+              <option value="">Выберите направление</option>
+              <option>Окрашивание волос</option>
+              <option>Стрижка и укладка</option>
+              <option>Маникюр</option>
+              <option>Педикюр</option>
+              <option>Барбер</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="client-date">Желаемая дата</label>
+            <input id="client-date" name="date" type="date">
+          </div>
+
+          <div class="form-row">
+            <label for="client-comment">Комментарий</label>
+            <textarea
+              id="client-comment"
+              name="comment"
+              placeholder="Удобное время, пожелания..."
+            ></textarea>
+          </div>
+
+          <button class="button" type="submit">
+            Подготовить заявку ↗
+          </button>
+
+          <p class="form-message" id="form-message" role="status">
+            Демо-форма: заявка не отправляется автоматически.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacts">
+    <div class="container footer-inner">
+      <a class="logo" href="#home">
+        Анна Кутузова
+        <small>Beauty & Barber studio</small>
+      </a>
+
+      <p class="footer-note">
+        © <span id="year"></span> Анна Кутузова.
+        Все права защищены.
+      </p>
+
+      <a
+        class="footer-link"
+        href="https://anna-kutuzova-studio.ru/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Официальный сайт ↗
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const content = {
+      beauty: {
+        eyebrow: "Студия красоты",
+        title: 'Красота в каждой <em>детали.</em>',
+        description:
+          "Пространство, где профессиональный подход встречается с эстетикой. Волосы, ногти и ваш индивидуальный стиль — в одном месте.",
+        note: "Забота о себе начинается здесь",
+        caption: "Твоя красота — твои правила",
+        heroImage:
+          "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=85",
+        aboutImage:
+          "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=85",
+        servicesTitle: "Услуги студии",
+        servicesDescription:
+          "Продуманный сервис, внимание к деталям и результат, который подходит именно вам.",
+        aboutTitle:
+          "Эстетика начинается с внимания к деталям",
+        aboutText:
+          "Мы верим, что красота не требует лишнего. Важны мастерство, индивидуальный подход и атмосфера, в которой можно уделить время себе.",
+        services: [
+          {
+            number: "01",
+            title: "Окрашивание",
+            description:
+              "Работа с цветом, обновление оттенка и создание индивидуального образа.",
+            priceItems: [
+              "Окрашивание корней",
+              "Окрашивание в один тон",
+              "Сложное окрашивание",
+              "Тонирование волос"
+            ]
+          },
+          {
+            number: "02",
+            title: "Стрижки",
+            description:
+              "Форма, длина и укладка с учётом ваших пожеланий.",
+            priceItems: [
+              "Женская стрижка",
+              "Стрижка кончиков",
+              "Коррекция чёлки",
+              "Укладка волос"
+            ]
+          },
+          {
+            number: "03",
+            title: "Маникюр",
+            description:
+              "Уход за ногтями, аккуратная обработка и покрытие.",
+            priceItems: [
+              "Маникюр без покрытия",
+              "Маникюр с покрытием",
+              "Снятие покрытия",
+              "Дизайн ногтей"
+            ]
+          },
+          {
+            number: "04",
+            title: "Педикюр",
+            description:
+              "Профессиональный уход за ногтями и кожей стоп.",
+            priceItems: [
+              "Педикюр без покрытия",
+              "Педикюр с покрытием",
+              "Обработка стоп",
+              "Снятие покрытия"
+            ]
+          }
+        ]
+      },
+
+      barber: {
+        eyebrow: "Мужской стиль",
+        title: 'Характер в каждой <em>линии.</em>',
+        description:
+          "Мужские стрижки, точные контуры и внимание к форме. Сдержанная эстетика и профессиональный подход к вашему стилю.",
+        note: "Точность. Форма. Характер.",
+        caption: "Твой стиль — твои правила",
+        heroImage:
+          "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=85",
+        aboutImage:
+          "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=85",
+        servicesTitle: "Услуги барбера",
+        servicesDescription:
+          "Чёткая форма, аккуратная работа и стиль, который подходит именно вам.",
+        aboutTitle: "Мужской стиль — без лишнего",
+        aboutText:
+          "Барбер-направление — отдельное пространство с графитовой палитрой, лаконичным дизайном и вниманием к деталям мужской стрижки.",
+        services: [
+          {
+            number: "01",
+            title: "Мужская стрижка",
+            description:
+              "Классические формы и современные варианты стрижек.",
+            priceItems: [
+              "Мужская стрижка",
+              "Стрижка машинкой",
+              "Стрижка ножницами",
+              "Детская стрижка"
+            ]
+          },
+          {
+            number: "02",
+            title: "Борода и усы",
+            description:
+              "Оформление контуров и аккуратная работа с формой.",
+            priceItems: [
+              "Моделирование бороды",
+              "Коррекция бороды",
+              "Оформление усов",
+              "Комплекс стрижка + борода"
+            ]
+          },
+          {
+            number: "03",
+            title: "Укладка",
+            description:
+              "Завершающий штрих для повседневного или особого образа.",
+            priceItems: [
+              "Укладка волос",
+              "Оформление текстуры",
+              "Коррекция контуров",
+              "Комплексный уход"
+            ]
+          },
+          {
+            number: "04",
+            title: "Уход",
+            description:
+              "Дополнительные процедуры для аккуратного внешнего вида.",
+            priceItems: [
+              "Мытьё головы",
+              "Уход за волосами",
+              "Камуфляж седины",
+              "Дополнительный уход"
+            ]
+          }
+        ]
+      }
+    };
+
+    // Цены заполняются после сверки с официальным прайсом.
+    // Не заменяйте их вымышленными значениями.
+
+    const priceOverrides = {};
+
+    const body = document.body;
+    const modeButtons = document.querySelectorAll(".mode-btn");
+    const servicesGrid = document.getElementById("services-grid");
+    const priceList = document.getElementById("price-list");
+
+    let currentMode = "beauty";
+
+    function renderServices(data) {
+      servicesGrid.innerHTML = data.services.map(service => `
+        <article class="service-card">
+          <div class="service-number">${service.number}</div>
+          <h3>${service.title}</h3>
+          <p>${service.description}</p>
+          <a class="service-link" href="#prices"
+             data-category="${service.number}">
+            Посмотреть услуги ↗
+          </a>
+        </article>
+      `).join("");
+
+      servicesGrid.querySelectorAll(".service-link")
+        .forEach(link => {
+          link.addEventListener("click", () => {
+            renderPrices(data, link.dataset.category);
+          });
+        });
+    }
+
+    function renderPrices(data, category) {
+      const items = data.services
+        .filter(service => !category || service.number === category)
+        .flatMap(service =>
+          service.priceItems.map(name => ({
+            category: service.title,
+            name
+          }))
+        );
+
+      priceList.innerHTML = items.map(item => {
+        const key = `${currentMode}:${item.name}`;
+        const price = priceOverrides[key];
+
+        return `
+          <div class="price-item">
+            <span>${item.name}</span>
+            <span class="price">
+              ${price ? price + " ₽" : "Уточняйте"}
+            </span>
+          </div>
+        `;
+      }).join("");
+
+      if (category) {
+        document.querySelector("#prices .section-heading h2")
+          .textContent = "Услуги: " +
+            data.services.find(s => s.number === category).title;
+      } else {
+        document.querySelector("#prices .section-heading h2")
+          .textContent = "Прайс-лист";
+      }
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      const data = content[mode];
+
+      body.classList.toggle("barber-mode", mode === "barber");
+
+      modeButtons.forEach(button => {
+        const active = button.dataset.mode === mode;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      document.getElementById("hero-eyebrow").textContent =
+        data.eyebrow;
+      document.getElementById("hero-title").innerHTML =
+        data.title;
+      document.getElementById("hero-description").textContent =
+        data.description;
+      document.getElementById("hero-note").textContent =
+        data.note;
+      document.getElementById("image-caption").textContent =
+        data.caption;
+      document.getElementById("hero-image").src =
+        data.heroImage;
+      document.getElementById("hero-image").alt =
+        mode === "barber"
+          ? "Интерьер барбершопа"
+          : "Интерьер студии красоты";
+      document.getElementById("about-image").src =
+        data.aboutImage;
+      document.getElementById("services-title").textContent =
+        data.servicesTitle;
+      document.getElementById("services-description").textContent =
+        data.servicesDescription;
+      document.getElementById("about-title").textContent =
+        data.aboutTitle;
+      document.getElementById("about-text").textContent =
+        data.aboutText;
+
+      renderServices(data);
+      renderPrices(data);
+
+      document.getElementById("client-service").value = "";
+    }
+
+    modeButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        setMode(button.dataset.mode);
+      });
+    });
+
+    document.getElementById("booking-form")
+      .addEventListener("submit", event => {
+        event.preventDefault();
+
+        const form = new FormData(event.currentTarget);
+        const name = form.get("name").trim();
+        const phone = form.get("phone").trim();
+        const service = form.get("service");
+        const date = form.get("date") || "Не указана";
+        const comment = form.get("comment") || "Нет";
+
+        const message = [
+          "Заявка в студию Анна Кутузова",
+          `Имя: ${name}`,
+          `Телефон: ${phone}`,
+          `Услуга: ${service}`,
+          `Дата: ${date}`,
+          `Комментарий: ${comment}`
+        ].join("\n");
+
+        document.getElementById("form-message").textContent =
+          "Заявка подготовлена. Скопируйте текст и отправьте " +
+          "его администратору удобным способом.";
+
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.className = "button button-outline";
+        copyButton.style.marginTop = "12px";
+        copyButton.textContent = "Скопировать заявку";
+
+        copyButton.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(message);
+            copyButton.textContent = "Заявка скопирована ✓";
+          } catch {
+            window.prompt("Скопируйте текст заявки:", message);
+          }
+        });
+
+        const oldButton =
+          document.getElementById("copy-booking");
+        if (oldButton) oldButton.remove();
+
+        copyButton.id = "copy-booking";
+        event.currentTarget.appendChild(copyButton);
+      });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    setMode("beauty");
+  </script>
+</body>
+</html>
